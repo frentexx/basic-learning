@@ -114,7 +114,6 @@ main{max-width:900px; margin:0 auto; padding:0 24px;}
   border-radius:999px; padding:8px 16px;
   display:flex; gap:8px; align-items:center; font-size:13px;
 }
-.timeline .t{color:var(--accent); font-family:"JetBrains Mono",monospace;}
 .timeline .l{color:var(--ink-2);}
 
 /* ---------- cards / grids ---------- */
@@ -180,6 +179,7 @@ main{max-width:900px; margin:0 auto; padding:0 24px;}
 .badge-ok{background:rgba(46,230,166,0.15); color:var(--ok);}
 .badge-warn{background:rgba(255,184,0,0.15); color:var(--warn);}
 .badge-danger{background:rgba(255,68,102,0.15); color:var(--danger);}
+.badge-info{background:rgba(0,212,255,0.12); color:var(--accent);}
 
 /* ---------- prompt box ---------- */
 .prompt-box{
