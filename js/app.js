@@ -73,10 +73,11 @@ onAuthStateChanged(auth, async (user) => {
 
   if (user) {
     loginBtn.textContent = isAdmin ? "登出（教師）" : "登出";
-    loginBtn.classList.toggle("signed-in", isAdmin);
+    loginBtn.classList.toggle("border-emerald-500/60", isAdmin);
+    loginBtn.classList.toggle("text-emerald-400", isAdmin);
   } else {
     loginBtn.textContent = "教師登入";
-    loginBtn.classList.remove("signed-in");
+    loginBtn.classList.remove("border-emerald-500/60", "text-emerald-400");
   }
 
   adminPanel.classList.toggle("hidden", !isAdmin);
@@ -117,22 +118,24 @@ onSnapshot(messagesQuery, (snapshot) => {
 
 function renderMessages(items) {
   if (!items.length) {
-    messageList.innerHTML = `<p class="empty-hint">目前沒有公告。</p>`;
+    messageList.innerHTML = `<p class="text-slate-500">目前沒有公告。</p>`;
     return;
   }
   messageList.innerHTML = items.map((m) => {
     const time = m.createdAt?.toDate ? m.createdAt.toDate().toLocaleString("zh-TW") : "";
-    const deleteBtn = isAdmin ? `<button data-id="${m.id}" class="delete-msg-btn">刪除</button>` : "";
+    const deleteBtn = isAdmin
+      ? `<button data-id="${m.id}" class="delete-msg-btn text-rose-400 hover:text-rose-300 text-xs whitespace-nowrap">刪除</button>`
+      : "";
     const url = safeUrl(m.linkUrl);
     const linkHtml = url
-      ? `<a class="msg-link" href="${url}" target="_blank" rel="noopener">${escapeHtml(m.linkLabel || "查看詳情")} →</a>`
+      ? `<a class="inline-block mt-2 text-cyan-400 hover:underline text-sm font-medium" href="${url}" target="_blank" rel="noopener">${escapeHtml(m.linkLabel || "查看詳情")} →</a>`
       : "";
     return `
-      <div class="message-item">
+      <div class="rounded-xl border border-slate-800 bg-slate-900/60 backdrop-blur-md p-4 flex justify-between gap-4 items-start">
         <div>
-          <p>${escapeHtml(m.text)}</p>
+          <p class="text-slate-200">${escapeHtml(m.text)}</p>
           ${linkHtml}
-          <p class="msg-meta">${time}</p>
+          <p class="text-slate-600 text-xs mt-1">${time}</p>
         </div>
         ${deleteBtn}
       </div>
@@ -172,11 +175,13 @@ function renderToolLinks(items) {
   toolLinks.innerHTML = items.map((l) => {
     const url = safeUrl(l.url);
     if (!url) return "";
-    const deleteBtn = isAdmin ? `<button data-id="${l.id}" class="chip-delete" title="刪除連結">×</button>` : "";
+    const deleteBtn = isAdmin
+      ? `<button data-id="${l.id}" class="chip-delete text-slate-600 hover:text-rose-400 transition-colors pl-2" title="刪除連結">×</button>`
+      : "";
     return `
-      <span class="tool-chip-wrap">
+      <span class="inline-flex items-center bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 rounded-lg pr-2 transition-all duration-200 whitespace-nowrap">
+        <a class="text-slate-300 hover:text-cyan-400 rounded-lg px-3 py-1.5 text-xs font-mono transition-colors" href="${url}" target="_blank" rel="noopener">${escapeHtml(l.label)}</a>
         ${deleteBtn}
-        <a class="tool-chip" href="${url}" target="_blank" rel="noopener">${escapeHtml(l.label)}</a>
       </span>
     `;
   }).join("");
@@ -195,9 +200,9 @@ function renderLinkManageList(items) {
     return;
   }
   linkManageList.innerHTML = items.map((l) => `
-    <div class="link-manage-item">
-      <span>${escapeHtml(l.label)}<span class="lm-url">${escapeHtml(l.url)}</span></span>
-      <button data-id="${l.id}" class="delete-link-btn">刪除</button>
+    <div class="flex justify-between items-center bg-slate-950/60 border border-slate-800 rounded-xl px-4 py-2 text-sm">
+      <span class="text-slate-300">${escapeHtml(l.label)}<span class="text-slate-600 ml-2 text-xs">${escapeHtml(l.url)}</span></span>
+      <button data-id="${l.id}" class="delete-link-btn text-rose-400 hover:text-rose-300 text-xs whitespace-nowrap">刪除</button>
     </div>
   `).join("");
 
