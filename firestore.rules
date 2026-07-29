@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /messages/{messageId} {
+      allow read: if true;
+      allow write: if request.auth != null
+                   && request.auth.token.email == 'fuwen@ppsh.ptc.edu.tw';
+    }
+    match /quicklinks/{linkId} {
+      allow read: if true;
+      allow write: if request.auth != null
+                   && request.auth.token.email == 'fuwen@ppsh.ptc.edu.tw';
+    }
+  }
+}

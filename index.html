@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>數位新手村｜高一新生資訊科技基礎課程</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="brand-tag">EP.01</span>
+      <span class="brand-name">數位新手村</span>
+    </div>
+    <nav class="unit-nav">
+      <a href="#announcements">公告</a>
+      <a href="#unit-email">Email禮儀</a>
+      <a href="#unit-drive">雲端協作</a>
+      <a href="#unit-padlet">Padlet</a>
+      <a href="#unit-ai">AI工具</a>
+      <a href="#unit-form">投票表單</a>
+      <a href="#unit-summary">資安總結</a>
+    </nav>
+    <button id="loginBtn" class="btn-ghost">教師登入</button>
+  </div>
+
+  <div class="toolbar">
+    <span class="toolbar-label">快速連結</span>
+    <div id="toolLinks" class="tool-links"></div>
+  </div>
+</header>
+
+<main>
+
+  <section id="hero" class="section hero">
+    <p class="kicker">屏北高中・高一新生迎新課程</p>
+    <h1>數位新手村：90 分鐘資訊科技基礎課</h1>
+    <p class="hero-desc">從自我介紹到 AI 工具，一堂課建立雲端協作能力，同步養成隱私防護、資安倫理、資安意識三種基本功。</p>
+
+    <ol class="timeline">
+      <li><span class="t">0:00</span><span class="l">暖身自我介紹</span></li>
+      <li><span class="t">0:08</span><span class="l">Email 禮儀</span></li>
+      <li><span class="t">0:26</span><span class="l">雲端分享協作</span></li>
+      <li><span class="t">0:44</span><span class="l">Padlet 對照體驗</span></li>
+      <li><span class="t">0:54</span><span class="l">AI 工具與資安倫理</span></li>
+      <li><span class="t">1:04</span><span class="l">投票表單實作</span></li>
+      <li><span class="t">1:25</span><span class="l">總結 Q&amp;A</span></li>
+    </ol>
+  </section>
+
+  <section id="announcements" class="section">
+    <h2><span class="num">01</span>課堂公告</h2>
+    <div id="messageList" class="message-list">
+      <p class="empty-hint">目前沒有公告。</p>
+    </div>
+
+    <div id="adminPanel" class="admin-panel hidden">
+      <div class="admin-block">
+        <h3>發布公告（僅教師帳號可見）</h3>
+        <form id="messageForm">
+          <textarea id="messageInput" placeholder="輸入公告文字…" required></textarea>
+          <div class="form-row">
+            <input type="url" id="linkUrlInput" placeholder="連結網址（選填，例如 https://...）">
+            <input type="text" id="linkLabelInput" placeholder="連結顯示文字（選填，預設「查看詳情」）">
+          </div>
+          <button type="submit" class="btn-primary">發布公告</button>
+        </form>
+      </div>
+
+      <div class="admin-block">
+        <h3>管理快速連結</h3>
+        <form id="linkForm">
+          <div class="form-row">
+            <input type="text" id="linkLabelNew" placeholder="連結名稱（例如 Gmail）" required>
+            <input type="url" id="linkUrlNew" placeholder="網址（例如 https://mail.google.com）" required>
+          </div>
+          <button type="submit" class="btn-primary">新增連結</button>
+        </form>
+        <div id="linkManageList" class="link-manage-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="unit-email" class="section">
+    <h2><span class="num">02</span>Email 禮儀</h2>
+    <div class="grid-2">
+      <div class="card card-bad">
+        <p class="card-label">✗ 不佳範例</p>
+        <p class="mail-subject">主旨：老師</p>
+        <p class="mail-body">我明天不能來上課<br>因為我要去看醫生</p>
+      </div>
+      <div class="card card-good">
+        <p class="card-label">✓ 良好範例</p>
+        <p class="mail-subject">主旨：請假申請 - 7/30 生活科技課 - 王小明</p>
+        <p class="mail-body">
+          王老師 您好，<br><br>
+          我是一年五班王小明。因明天上午需就醫回診，將無法出席第三節生活科技課，特此請假並附上證明，煩請老師知悉。<br><br>
+          造成不便，敬請見諒。<br>
+          王小明 敬上
+        </p>
+      </div>
+    </div>
+    <ul class="checklist">
+      <li><b>主旨言簡意賅</b>：讓對方一眼看出事由，而非只寫「老師」</li>
+      <li><b>開頭有尊稱</b>：稱謂 + 問候語，不要直接進主題</li>
+      <li><b>內容起承轉合</b>：先說明身份與事由，再說明請求，最後致謝</li>
+      <li><b>結尾署名</b>：讓對方知道是誰寄的</li>
+    </ul>
+    <div class="callout callout-warn">
+      🎣 <b>資安倫理</b>：釣魚郵件常見特徵——語氣緊急要你「立即處理」、附上可疑連結、要求輸入帳號密碼。收到信先把滑鼠移到連結上看真實網址，不確定就直接問老師，不要點。
+    </div>
+  </section>
+
+  <section id="unit-drive" class="section">
+    <h2><span class="num">03</span>Google 雲端分享協作</h2>
+    <ol class="steps">
+      <li>建立一個共用資料夾，命名清楚（例如「一年五班_生科作業」）</li>
+      <li>點選「共用」，只加入需要協作的特定人，不要用「知道連結的人皆可存取」</li>
+      <li>依需求選擇權限：可檢視 / 可留言 / 可編輯——能用低權限就不給高權限</li>
+      <li>用「版本記錄」找回被誤刪或改壞的檔案</li>
+    </ol>
+    <div class="callout callout-lock">
+      🔐 <b>隱私防護</b>：權限開太大是資料外洩最常見的原因。分享前多想一步——「這個人真的需要編輯權限，還是檢視就夠？」這叫做<b>最小必要原則</b>。
+    </div>
+  </section>
+
+  <section id="unit-padlet" class="section">
+    <h2><span class="num">04</span>Padlet 體驗與對照</h2>
+    <p>全班一起到班級 Padlet 牆貼上「我最想推薦的一個工具」小卡，即時看到全班的貼文。</p>
+    <a class="btn-primary" href="https://padlet.com/fuwen/padlet-eplgg5eg9fqi8i7" target="_blank" rel="noopener">開啟 Padlet 班級牆 →</a>
+
+    <table class="compare-table">
+      <thead><tr><th>特性</th><th>Google 雲端硬碟</th><th>Padlet</th></tr></thead>
+      <tbody>
+        <tr><td>用途</td><td>正式檔案儲存、版本控管</td><td>即時想法蒐集、公開展示</td></tr>
+        <tr><td>權限控管</td><td>可精細設定（檢視/留言/編輯，指定特定人）</td><td>預設公開連結，權限較粗略</td></tr>
+        <tr><td>即時互動</td><td>需重新整理或開啟通知</td><td>貼文即時同步顯示，像佈告欄</td></tr>
+        <tr><td>適合情境</td><td>交作業、共同編輯文件、正式紀錄</td><td>腦力激盪、票選、蒐集大家想法</td></tr>
+      </tbody>
+    </table>
+    <div class="callout callout-alert">
+      ⚠️ <b>資安意識</b>：Padlet 牆通常是公開連結，任何拿到連結的人都能看到貼文內容，貼文前想清楚「這則貼文我願意讓不認識的人看到嗎？」
+    </div>
+  </section>
+
+  <section id="unit-ai" class="section">
+    <h2><span class="num">05</span>AI 工具認識與資安倫理</h2>
+    <div class="tool-cards">
+      <a class="tool-card" href="https://gemini.google.com" target="_blank" rel="noopener">
+        <span class="tool-card-name">Gemini</span>
+        <span class="badge badge-ok">用校方 Google 帳號即可</span>
+      </a>
+      <a class="tool-card" href="https://chatgpt.com" target="_blank" rel="noopener">
+        <span class="tool-card-name">ChatGPT</span>
+        <span class="badge badge-warn">13+，18歲以下需家長同意</span>
+      </a>
+      <a class="tool-card" href="https://suno.com" target="_blank" rel="noopener">
+        <span class="tool-card-name">Suno</span>
+        <span class="badge badge-warn">13+，18歲以下需家長同意</span>
+      </a>
+      <a class="tool-card" href="https://claude.ai" target="_blank" rel="noopener">
+        <span class="tool-card-name">Claude</span>
+        <span class="badge badge-danger">18歲以上，無例外</span>
+      </a>
+    </div>
+
+    <div class="callout callout-lock">
+      🔐 <b>隱私防護</b>：不要把姓名全名、班級座號、成績單、同學照片貼給任何 AI 工具——你不知道這些內容之後會被怎麼使用或儲存。
+    </div>
+    <div class="callout callout-warn">
+      ⚖️ <b>資安倫理</b>：用 AI 生成的內容，引用要註明來源；不能整段複製貼上當作自己寫的作業交出去。
+    </div>
+    <div class="callout callout-alert">
+      🎯 <b>資安意識</b>：不同服務的年齡規定不一樣，是因為各家對「未成年人風險」的判斷不同。使用前花 10 秒看一下年齡限制，是基本的自我保護習慣。
+    </div>
+  </section>
+
+  <section id="unit-form" class="section">
+    <h2><span class="num">06</span>用 Gemini 寫班遊投票表單</h2>
+    <p>把下面這段提示詞複製給 Gemini，請它幫忙產出表單題目草稿：</p>
+    <div class="prompt-box">
+      請幫我用繁體中文設計一份「班級出遊投票」Google 表單的題目，需要包含：
+      出遊地點的 3 個選項（單選）、想去的星期（單選）、飲食禁忌（簡答，非必填）。
+      不要問學生姓名以外的個資。
+    </div>
+    <ol class="steps">
+      <li>把 Gemini 產出的題目複製貼進 Google 表單</li>
+      <li>到「回覆」設定分頁，勾選「限制回覆 1 次」</li>
+      <li>檢查題目欄位，刪掉任何非必要的個資欄位（例如生日、電話）</li>
+    </ol>
+    <a class="btn-primary" href="https://forms.new" target="_blank" rel="noopener">建立新的 Google 表單 →</a>
+    <div class="callout callout-lock">
+      🔐 <b>隱私防護</b>：表單只問「完成投票所需的最少欄位」，多問的每一個欄位都是多一分外洩風險。
+    </div>
+  </section>
+
+  <section id="unit-summary" class="section">
+    <h2><span class="num">07</span>資安總結卡</h2>
+    <div class="summary-cards">
+      <div class="summary-card">
+        <p class="summary-title">🔐 隱私防護</p>
+        <p>保護個人與他人的資料，不隨意公開或提供給不必要的對象。</p>
+      </div>
+      <div class="summary-card">
+        <p class="summary-title">⚖️ 資安倫理</p>
+        <p>使用工具與資料時，遵守不侵犯他人權益、誠實引用的原則。</p>
+      </div>
+      <div class="summary-card">
+        <p class="summary-title">🎯 資安意識</p>
+        <p>養成隨時判斷風險的習慣——點連結前想一下、分享前多想一步。</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>屏北高中 生活科技科 ・ 高一新生資訊科技基礎課程</p>
+</footer>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
